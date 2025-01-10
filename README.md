@@ -56,11 +56,11 @@ This project implements a chat server environment using the **ESP8266** microcon
 2. **Deploy Devices:**
    - Connect the LoRa modules to the ESP8266 boards.
    - Power on the devices to establish communication over LoRa.
-   - Change the spreading factor and other parameters in the chat app to match each other.
 
 3. **Connect via Wi-Fi Hotspot:**
    - Users can connect to the ESP8266's Wi-Fi network to participate in the chat.
    - You can change the WiFi hotspot SSID and password in the code.
+   - Change the spreading factor and other parameters in the chat app to match each other.
 
 4. **File Transfer (Optional):**
    - The chat interface includes an option for file transfer, although it is not yet functional.
