@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="container" >
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<input id="userId" autocomplete="off" placeholder="Enter your name" /><button onclick="setName()">Set</button>
+			</div>
+		</div>
+		<div id="uploadModal" class="modal">
+			<div class="modal-content">
+				<p>Select a new file to upload.</p>
+				<iframe name="votar" style="display:none;"></iframe>
+				<form method="POST" enctype="multipart/form-data" action="/upload" target="votar">
+					<input class="btn-primary" type="file" name="data">
+					<input class="btn-primary" type="submit" value="Upload" onclick="closeModal('uploadModal');">
+					<div>
+						<input class="btn-warning" type="button" value="close" onclick="closeModal('uploadModal');">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="settingsModal" class="modal">
+			<div class="modal-content">
+				<p>Settings</p>
+				<iframe name="votar" style="display:none;"></iframe>
+				<form method="POST" enctype="multipart/form-data" action="/settings" target="votar">
+					<div>
+						<div class="lables">
+							<label for="PA_mode">PA_mode:</label>
+						</div>
+						<select class="drop" name="PA_mode" id="PA_mode">
+							<option value="PA_OUTPUT_PA_BOOST_PIN">PA_OUTPUT_PA_BOOST_PIN</option>
+							<option value="PA_OUTPUT_RFO_PIN">PA_OUTPUT_RFO_PIN</option>
+						</select>
+					</div>
+					<div>
+						<div class="lables">
+							<label for="TxPower">TxPower:</label>
+						</div>
+						<input class="num" type="number" name="TxPower" id="TxPower">
+					</div>
+					<div>
+						<div class="lables">
+							<label for="SignalBandwidth">SignalBandwidth:</label>
+						</div>
+						<select class="drop" id="SignalBandwidth" name="SignalBandwidth">
+							<option value="7800">7.8E3</option>
+							<option value="10400">10.4E3</option>
+							<option value="15600">15.6E3</option>
+							<option value="20800">20.8E3</option>
+							<option value="31250">31.25E3</option>
+							<option value="41700">41.7E3</option>
+							<option value="62500">62.5E3</option>
+							<option value="125000">125E3</option>
+							<option value="250000">250E3</option>
+							<option value="500000">500E3</option>
+						</select>
+					</div>
+					<div>
+						<div class="lables">
+							<label for="SpreadingFactor">SpreadingFactor:</label>
+						</div>
+						<select class="drop" id="SpreadingFactor" name="SpreadingFactor">
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+					<div>
+						<div class="lables">
+							<label for="CodingRate">CodingRate:</label>
+						</div>
+							<select class="drop" name="CodingRate" id="CodingRate">
+								<option value="5">4/5</option>
+								<option value="6">4/6</option>
+								<option value="7">4/7</option>
+								<option value="8">4/8</option>
+						</select>
+						
+					</div>
+					<div>
+						<div class="lables">
+							<label for="Gain">Gain:</label>
+						</div>
+							<select class="drop" name="Gain" id="Gain">
+								<option value="0">AGC</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+						</select>
+						
+					</div>
+					<div>
+						<input class="btn-primary" type="button" value="submit" onclick="settingSubmit();">
+					</div>
+					<div>
+						<input class="btn-primary" type="button" value="close" onclick="closeModal('settingsModal');">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div>
+			<div id="menuModal" class="modal">
+				<div class="modal-content">
+				<button class="btn-warning" onclick="clearMessages()">Delete Messages</button><br>
+				<button class="btn-primary" onclick="closeModal('menuModal'); openModal('myModal')">Change user name</button>
+				<button class="btn-primary" onclick="uploadModal()">Upload File</button>
+				<button class="btn-primary" onclick="settingsModal()">Settings</button>
+				<button class="btn-primary" onclick="closeModal('menuModal')">Close</button>
+
+				</div>
+			</div>
+		</div>
+		<div id="head" onclick="openModal('menuModal')" onmousedown="hideOnClickOutside('menuModal')">
+			<h2 >Chat App</h2>
+		</div>
+	
+		<ul id="messages"></ul>
+
+	</div>
+	
+	<form id="chatbox">
+		<input id="m" autocomplete="off" placeholder="Type to begin..." /><button type="button" onclick="sendMessage()">Send</button>
+	</form>
+	<script src="javascript.js"></script>
+</body>
+
+</html>

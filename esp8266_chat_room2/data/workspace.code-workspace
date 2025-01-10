@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "UPS1",
+			"path": "..\\..\\UPS1"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"functional": "cpp",
+			"algorithm": "cpp"
+		}
+	}
+}
